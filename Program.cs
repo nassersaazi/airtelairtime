@@ -5,7 +5,6 @@ builder.Services.AddDbContext<TransactionDB>(opt => opt.UseInMemoryDatabase("Pay
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 var app = builder.Build();
 
-
 app.MapGet("/transactions/status/{referenceId}", async (string referenceId, TransactionDB db) =>
     await db.Transactions.FindAsync(referenceId)
         is Transaction transaction
